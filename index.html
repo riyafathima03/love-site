@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- IMPORTANT for phone -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You ❤️</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+/* Body */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd6dc, #ffeef1);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Heart screen (first page) */
+#heartScreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Heart shape */
+.heart {
+    width: 110px;
+    height: 110px;
+    background: #e91e63;
+    position: relative;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    animation: beat 1s infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    width: 110px;
+    height: 110px;
+    background: #e91e63;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -55px;
+    left: 0;
+}
+
+.heart:after {
+    left: 55px;
+    top: 0;
+}
+
+@keyframes beat {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.1); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+/* Main content */
+#content {
+    display: none;
+    padding: 40px 20px;
+    animation: fadeIn 1.5s;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Photo */
+.photo-section img {
+    width: 350px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* Text */
+.text-section {
+    max-width: 520px;
+}
+
+.text-section h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #c2185b;
+    margin-bottom: 10px;
+}
+
+.text-section p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #4a2c2c;
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    color: #ff4d6d;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-section {
+        text-align: center;
+    }
+
+    .text-section h1 {
+        font-size: 34px;
+    }
+
+    .text-section p {
+        font-size: 16px;
+    }
+
+    .photo-section img {
+        width: 90%;
+        max-width: 320px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Optional Music -->
+<audio id="music" src="dooron.mp3" loop></audio>
+
+<!-- First Screen -->
+<div id="heartScreen">
+    <div class="heart" onclick="showContent()"></div>
+    <h3>Tap the heart ❤️</h3>
+</div>
+
+<!-- Main Content -->
+<div id="content">
+    <div class="container">
+
+        <div class="photo-section">
+            <!-- Make sure file name matches exactly -->
+            <img src="riyafahad.jpeg" alt="Us">
+        </div>
+
+        <div class="text-section">
+            <h1>I'm Sorry ❤️</h1>
+            <p>
+Hi baby,
+
+I’m so sorry for hurting you. I know words can’t erase the amount of pain I put you through. But I am genuinely sorry. Wallahi, I’ll make sure this never happens again. I know I should have talked to you before ending things like that. I know I should have been more understanding. I know you were busy, and I understand that you have a household to manage and that your focus right now is your career.
+
+I’m so sorry. I promise I’ll never hurt you again. I promise to always communicate before making any stupid decisions.
+
+Please give me one more chance. I miss you so much. I miss how we used to be. I miss your smile, your jokes, and the way you used to annoy me.
+
+I love you so much, more than you can ever imagine. I want to grow old with you. I want to see you win, buy that BMW you have always dreamed of, and watch you achieve it with happy tears in my eyes. I want to see you achieve all your dreams, and I promise to always have your back and your support system and encourage you even on your worst days.
+
+I want to see you win in life. I want to see us finally make it, even after all the problems we are going to face in the future, and one day say, “We finally made it.” I want us to go for Umrah after our nikkah, travel the world together, go on that all-India trip and everywhere else with you.
+
+I want to see you become the best father to our kids, which you definitely will be. I want to see you take them out, send them to school, and even get them married  and I want us to see it all together.
+
+I know I have been very cold towards you, and every time we fight, I realize how much you mean to me and how much I love you. I hope we never fall out of love with each other and that we always win. Please give me a chance to make this right.
+
+I love you, always and forever.❤️
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function showContent() {
+    document.getElementById("heartScreen").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    // Play music after tap (works on phones)
+    var music = document.getElementById("music");
+    if (music) music.play();
+
+    startFloatingHearts();
+}
+
+/* Reduced frequency for phone performance */
+function startFloatingHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (12 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (5 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }, 600); // slower for mobile
+}
+</script>
+
+</body>
+</html>
